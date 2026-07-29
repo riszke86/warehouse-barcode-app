@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title><%= pageTitle %></title>
 
@@ -11,21 +16,251 @@
 
 <body>
 
-    <main>
+    <div class="app-layout">
 
-        <h1>Warehouse Barcode System</h1>
+        <!-- ================= SIDEBAR ================= -->
 
-        <p>
-            Create, scan and manage warehouse barcodes.
-        </p>
+        <aside class="sidebar">
 
-        <nav>
-            <a href="/products/create">Create Product</a>
-            <a href="/inventory">Inventory</a>
-            <a href="/scanner">Scan Barcode</a>
-        </nav>
+            <div class="brand">
+                <div class="brand-icon">
+                    W
+                </div>
 
-    </main>
+                <div>
+                    <h2>Warehouse</h2>
+                    <p>Inventory System</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="/" class="nav-link active">
+                    <span class="nav-icon">⌂</span>
+                    Dashboard
+                </a>
+
+                <a href="/inventory" class="nav-link">
+                    <span class="nav-icon">▦</span>
+                    Inventory
+                </a>
+
+                <a href="/products/create" class="nav-link">
+                    <span class="nav-icon">＋</span>
+                    Create Product
+                </a>
+
+                <a
+                    href="/products/barcode-generator"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">▥</span>
+                    Barcode Generator
+                </a>
+
+                <a href="/scanner" class="nav-link">
+                    <span class="nav-icon">⌗</span>
+                    Barcode Scanner
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Warehouse Barcode App</p>
+                <span>Version 1.0</span>
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN AREA ================= -->
+
+        <div class="main-area">
+
+            <header class="topbar">
+
+                <div>
+                    <p class="topbar-label">
+                        Warehouse Overview
+                    </p>
+
+                    <h1>Dashboard</h1>
+
+                    <p>
+                        Manage warehouse products, stock records and barcodes
+                        from one central system.
+                    </p>
+                </div>
+
+                <a
+                    href="/products/create"
+                    class="primary-button"
+                >
+                    <span>＋</span>
+                    Create Product
+                </a>
+
+            </header>
+
+
+            <main class="page-content">
+
+                <!-- WELCOME SECTION -->
+
+                <section class="page-intro">
+
+                    <div class="intro-icon">
+                        W
+                    </div>
+
+                    <div>
+                        <h2>Warehouse Barcode System</h2>
+
+                        <p>
+                            Create products, manage inventory and generate
+                            downloadable Code 128 barcodes.
+                        </p>
+                    </div>
+
+                </section>
+
+
+                <!-- QUICK ACTIONS -->
+
+                <section class="dashboard-section">
+
+                    <div class="card-heading">
+
+                        <div>
+                            <p class="section-label">
+                                Quick actions
+                            </p>
+
+                            <h2>Manage your warehouse</h2>
+                        </div>
+
+                    </div>
+
+
+                    <div class="dashboard-action-grid">
+
+                        <a
+                            href="/products/create"
+                            class="dashboard-action-card"
+                        >
+                            <div class="dashboard-action-icon">
+                                ＋
+                            </div>
+
+                            <div>
+                                <h3>Create Product</h3>
+
+                                <p>
+                                    Add a new product and generate its barcode.
+                                </p>
+                            </div>
+
+                            <span class="dashboard-action-arrow">
+                                →
+                            </span>
+                        </a>
+
+
+                        <a
+                            href="/inventory"
+                            class="dashboard-action-card"
+                        >
+                            <div class="dashboard-action-icon">
+                                ▦
+                            </div>
+
+                            <div>
+                                <h3>View Inventory</h3>
+
+                                <p>
+                                    Browse warehouse products and stock levels.
+                                </p>
+                            </div>
+
+                            <span class="dashboard-action-arrow">
+                                →
+                            </span>
+                        </a>
+
+
+                        <a
+                            href="/products/barcode-generator"
+                            class="dashboard-action-card"
+                        >
+                            <div class="dashboard-action-icon">
+                                ▥
+                            </div>
+
+                            <div>
+                                <h3>Barcode Generator</h3>
+
+                                <p>
+                                    Generate a barcode without saving a product.
+                                </p>
+                            </div>
+
+                            <span class="dashboard-action-arrow">
+                                →
+                            </span>
+                        </a>
+
+
+                        <a
+                            href="/scanner"
+                            class="dashboard-action-card"
+                        >
+                            <div class="dashboard-action-icon">
+                                ⌗
+                            </div>
+
+                            <div>
+                                <h3>Barcode Scanner</h3>
+
+                                <p>
+                                    Open the barcode scanning workspace.
+                                </p>
+                            </div>
+
+                            <span class="dashboard-action-arrow">
+                                →
+                            </span>
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+                <!-- SYSTEM INFORMATION -->
+
+                <section class="information-card">
+
+                    <div class="information-icon">
+                        i
+                    </div>
+
+                    <div>
+                        <h3>Warehouse management workspace</h3>
+
+                        <p>
+                            Use the navigation menu or the quick-action cards
+                            to access the main application features.
+                        </p>
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
 
 </body>
+
 </html>

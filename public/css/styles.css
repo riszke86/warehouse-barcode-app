@@ -755,3 +755,106 @@ select {
     }
 
 }
+
+/* ================= DASHBOARD ================= */
+
+.dashboard-section {
+    background: #ffffff;
+    border: 1px solid #e3e8f0;
+    border-radius: 22px;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+    overflow: hidden;
+}
+
+.dashboard-section .card-heading {
+    padding: 32px 40px;
+    border-bottom: 1px solid #e7ebf2;
+}
+
+.dashboard-action-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    padding: 40px;
+}
+
+.dashboard-action-card {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    align-items: center;
+    gap: 20px;
+    padding: 26px;
+    border: 1px solid #e1e7f0;
+    border-radius: 18px;
+    background: #ffffff;
+    color: #111827;
+    text-decoration: none;
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.dashboard-action-card:hover {
+    transform: translateY(-3px);
+    border-color: #2f66ea;
+    box-shadow: 0 16px 32px rgba(47, 102, 234, 0.12);
+}
+
+.dashboard-action-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: #eef4ff;
+    color: #2f66ea;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.dashboard-action-card h3 {
+    margin: 0 0 7px;
+    font-size: 19px;
+}
+
+.dashboard-action-card p {
+    margin: 0;
+    color: #6b7280;
+    line-height: 1.55;
+}
+
+.dashboard-action-arrow {
+    color: #2f66ea;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .dashboard-action-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .dashboard-section .card-heading,
+    .dashboard-action-grid {
+        padding: 24px;
+    }
+
+    .dashboard-action-card {
+        grid-template-columns: 52px 1fr;
+        padding: 20px;
+    }
+
+    .dashboard-action-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 24px;
+    }
+
+    .dashboard-action-arrow {
+        display: none;
+    }
+}
