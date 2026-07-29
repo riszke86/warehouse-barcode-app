@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title><%= pageTitle %></title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+    <div class="app-layout">
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">
+                    W
+                </div>
+
+                <div>
+                    <h2>Warehouse</h2>
+                    <p>Inventory System</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="/" class="nav-link">
+                    <span class="nav-icon">⌂</span>
+                    Dashboard
+                </a>
+
+                <a href="/inventory" class="nav-link">
+                    <span class="nav-icon">▦</span>
+                    Inventory
+                </a>
+
+                <a href="/products/create" class="nav-link">
+                    <span class="nav-icon">＋</span>
+                    Create Product
+                </a>
+
+                <a
+                    href="/products/barcode-generator"
+                    class="nav-link active"
+                >
+                    <span class="nav-icon">▥</span>
+                    Quick Barcode
+                </a>
+
+                <a href="/scanner" class="nav-link">
+                    <span class="nav-icon">⌗</span>
+                    Barcode Scanner
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Warehouse Barcode App</p>
+                <span>Version 1.0</span>
+            </div>
+        </aside>
+
+
+        <!-- ================= MAIN AREA ================= -->
+
+        <div class="main-area">
+            <header class="topbar">
+                <div>
+                    <p class="topbar-label">
+                        Barcode Tools
+                    </p>
+
+                    <h1>Quick Barcode Generator</h1>
+                </div>
+            </header>
+
+
+            <main class="page-content">
+                <section class="page-intro">
+                    <div class="intro-icon">
+                        ▥
+                    </div>
+
+                    <div>
+                        <h2>Create a barcode from a number</h2>
+                        <p>
+                            Enter a numeric value below. This barcode will not
+                            be saved to the product database.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="quick-barcode-card">
+                    <div class="card-heading">
+                        <div>
+                            <p class="section-label">
+                                Barcode generator
+                            </p>
+                            <h2>Enter barcode number</h2>
+                        </div>
+                    </div>
+
+
+                    <% if (errorMessage) { %>
+                        <div class="error-message">
+                            <strong>Barcode not created</strong>
+                            <p><%= errorMessage %></p>
+                        </div>
+                    <% } %>
+
+
+                    <form
+                        action="/products/barcode-generator"
+                        method="POST"
+                        class="quick-barcode-form"
+                    >
+
+                        <div class="form-group">
+
+                            <label for="barcodeNumber">
+                                Barcode number
+                            </label>
+
+                            <input
+                                type="text"
+                                inputmode="numeric"
+                                pattern="[0-9]*"
+                                id="barcodeNumber"
+                                name="barcodeNumber"
+                                placeholder="Example: 123456789"
+                                value="<%= barcodeNumber %>"
+                                autocomplete="off"
+                                required
+                            >
+
+                            <small>
+                                Numbers only. Spaces and letters are not accepted.
+                            </small>
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="primary-button"
+                        >
+                            Generate Barcode
+                        </button>
+                    </form>
+
+
+                    <% if (barcodeImage) { %>
+                        <section class="quick-barcode-result">
+                            <div class="success-icon">
+                                ✓
+                            </div>
+
+                            <p class="section-label">
+                                Barcode created
+                            </p>
+
+                            <h2><%= barcodeNumber %></h2>
+
+                            <div class="barcode-preview">
+                                <img
+                                    src="<%= barcodeImage %>"
+                                    alt="Barcode for <%= barcodeNumber %>"
+                                >
+                            </div>
+
+                            <a
+                                href="<%= barcodeImage %>"
+                                download="barcode-<%= barcodeNumber %>.png"
+                                class="secondary-button"
+                            >
+                                Download Barcode
+                            </a>
+                        </section>
+                    <% } %>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

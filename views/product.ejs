@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title><%= pageTitle %></title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+    <div class="product-result-page">
+
+        <section class="product-result-card">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <p class="section-label">
+                Product created
+            </p>
+
+            <h1><%= product.product_name %></h1>
+
+            <p class="success-description">
+                The product was saved and its barcode was generated successfully.
+            </p>
+
+            <div class="barcode-preview">
+
+                <img
+                    src="<%= barcodeImage %>"
+                    alt="Barcode for <%= product.sku %>"
+                >
+
+            </div>
+
+            <dl class="product-details">
+
+                <div>
+                    <dt>SKU</dt>
+                    <dd><%= product.sku %></dd>
+                </div>
+
+                <div>
+                    <dt>Category</dt>
+                    <dd><%= product.category %></dd>
+                </div>
+
+                <div>
+                    <dt>Location</dt>
+                    <dd><%= product.location %></dd>
+                </div>
+
+                <div>
+                    <dt>Quantity</dt>
+                    <dd><%= product.quantity %></dd>
+                </div>
+
+                <div>
+                    <dt>Barcode value</dt>
+                    <dd><%= product.barcode_value %></dd>
+                </div>
+
+            </dl>
+
+            <div class="product-result-actions">
+
+                <a
+                    href="<%= barcodeImage %>"
+                    class="secondary-button"
+                    download
+                >
+                    Download Barcode
+                </a>
+
+                <a
+                    href="/products/create"
+                    class="primary-button"
+                >
+                    Create Another Product
+                </a>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</body>
+
+</html>
