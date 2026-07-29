@@ -1,14 +1,11 @@
 const express = require("express");
 const path = require("path");
+
 const db = require("./database");
 const productRoutes = require("./routes/products");
 
 const app = express();
-const PORT = 3000;const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+const PORT = process.env.PORT || 3000;
 
 // View engine
 app.set("view engine", "ejs");
@@ -26,8 +23,45 @@ app.get("/", (req, res) => {
     });
 });
 
-// Start server
+// Inventory page
+app.get("/inventory", (req, res) => {
+    const sql = `
+        SELECT
+            id,
+            product_name,
+            sku,
+            category,
+            location,
+            quantity,
+            barcode_value,
+            created_at
+        FROM products
+        ORDER BY created_at DESC
+    `;
+
+    db.all(sql, [], (error, products) => {
+        if (error) {
+            console.error("Failed to load inventory:", error.message);
+
+            return res.status(500).render("inventory", {
+                pageTitle: "Inventory",
+                products: [],
+                errorMessage: "The inventory could not be loaded."
+            });
+        }
+
+        res.render("inventory", {
+            pageTitle: "Inventory",
+            products,
+            errorMessage: null
+        });
+    });
+});
+
+// Product routes
 app.use("/products", productRoutes);
+
+// Start server
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
